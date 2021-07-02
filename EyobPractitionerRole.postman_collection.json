@@ -1,0 +1,487 @@
+{
+	"info": {
+		"_postman_id": "0df5592b-196a-4118-8cda-92e7871db1dd",
+		"name": "EyobPractitionerRole",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PractitionerRole- Search By ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "grant_type",
+							"value": "implicit",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Token Name",
+							"type": "string"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://qa.healthgorilla.com/authcallback",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "L/2MG+Ru8Wa7H87e/tH/VucBJlKNpINhK1SyocyHzac=",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Wtb6V2Cv6GmMCfeW7cAqQWQYbRFPFBaX5n86dJSb",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "queryParams",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "body",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize/access_token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{portalUrl}}/fhir/R4/PractitionerRole/063e946057a62f75d26e16f3?_format=json",
+					"host": [
+						"{{portalUrl}}"
+					],
+					"path": [
+						"fhir",
+						"R4",
+						"PractitionerRole",
+						"063e946057a62f75d26e16f3"
+					],
+					"query": [
+						{
+							"key": "_format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PractitionerRole - Search By NPI",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "grant_type",
+							"value": "implicit",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Token Name",
+							"type": "string"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://qa.healthgorilla.com/authcallback",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "L/2MG+Ru8Wa7H87e/tH/VucBJlKNpINhK1SyocyHzac=",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Wtb6V2Cv6GmMCfeW7cAqQWQYbRFPFBaX5n86dJSb",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "queryParams",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "body",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize/access_token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{portalUrl}}/fhir/PractitionerRole?identifier=http://hl7.org/fhir/sid/us-npi%7cFAKE000104&_include=PractitionerRole:organization&_include=PractitionerRole:location&_include=PractitionerRole:practitioner",
+					"host": [
+						"{{portalUrl}}"
+					],
+					"path": [
+						"fhir",
+						"PractitionerRole"
+					],
+					"query": [
+						{
+							"key": "identifier",
+							"value": "http://hl7.org/fhir/sid/us-npi%7cFAKE000104"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:organization"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:location"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:practitioner"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PractitionerRole - Search By Practitioner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "grant_type",
+							"value": "implicit",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Token Name",
+							"type": "string"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://qa.healthgorilla.com/authcallback",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "L/2MG+Ru8Wa7H87e/tH/VucBJlKNpINhK1SyocyHzac=",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Wtb6V2Cv6GmMCfeW7cAqQWQYbRFPFBaX5n86dJSb",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "queryParams",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "body",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize/access_token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{portalUrl}}/fhir/R4/PractitionerRole?practitioner=063e946057a62f75d26e16f3&_include=PractitionerRole:organization&_include=PractitionerRole:location&_include=PractitionerRole:practitioner",
+					"host": [
+						"{{portalUrl}}"
+					],
+					"path": [
+						"fhir",
+						"R4",
+						"PractitionerRole"
+					],
+					"query": [
+						{
+							"key": "practitioner",
+							"value": "063e946057a62f75d26e16f3"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:organization"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:location"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:practitioner"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PractitionerRole- Search By Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{portalUrl}}/fhir/R4/PractitionerRole?role=http://hl7.org/fhir/practitioner-role%7cdoctor&_include=PractitionerRole:practitioner&organization=t-063e946086545aaf9785e698&specialty=Critical Care Medicine",
+					"host": [
+						"{{portalUrl}}"
+					],
+					"path": [
+						"fhir",
+						"R4",
+						"PractitionerRole"
+					],
+					"query": [
+						{
+							"key": "role",
+							"value": "http://hl7.org/fhir/practitioner-role%7cdoctor"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:practitioner"
+						},
+						{
+							"key": "organization",
+							"value": "t-063e946086545aaf9785e698"
+						},
+						{
+							"key": "specialty",
+							"value": "Critical Care Medicine"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RyanPractitionerRole Search By Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "grant_type",
+							"value": "implicit",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Token Name",
+							"type": "string"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://qa.healthgorilla.com/authcallback",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "L/2MG+Ru8Wa7H87e/tH/VucBJlKNpINhK1SyocyHzac=",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Wtb6V2Cv6GmMCfeW7cAqQWQYbRFPFBaX5n86dJSb",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "queryParams",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "body",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize/access_token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{portalUrl}}/fhir/R4/PractitionerRole/af769160d0226f0a87b81e24",
+					"host": [
+						"{{portalUrl}}"
+					],
+					"path": [
+						"fhir",
+						"R4",
+						"PractitionerRole",
+						"af769160d0226f0a87b81e24"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ryan Search By NPI",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{portalUrl}}/fhir/R4/Practitioner?identifier=http://hl7.org/fhir/sid/us-npi|1376850859&_include=PractitionerRole:organization&_include=PractitionerRole:location&_include=PractitionerRole:practitioner",
+					"host": [
+						"{{portalUrl}}"
+					],
+					"path": [
+						"fhir",
+						"R4",
+						"Practitioner"
+					],
+					"query": [
+						{
+							"key": "identifier",
+							"value": "http://hl7.org/fhir/sid/us-npi|1376850859"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:organization"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:location"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:practitioner"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
