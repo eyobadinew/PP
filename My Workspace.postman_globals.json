@@ -1,0 +1,59 @@
+{
+	"id": "c202141e-34ec-46ba-8143-e0e64104aec0",
+	"values": [
+		{
+			"key": "portalUrl",
+			"value": "https://qa.healthgorilla.com",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "02e476a2c59512a223218e27806aebfb",
+			"enabled": true
+		},
+		{
+			"key": "practitionerId",
+			"value": "063e946057a62f75d26e16f3",
+			"enabled": true
+		},
+		{
+			"key": "patientId",
+			"value": "3daa95605e79d6de2cf2a7de",
+			"enabled": true
+		},
+		{
+			"key": "clientId",
+			"value": "Wtb6V2Cv6GmMCfeW7cAqQWQYbRFPFBaX5n86dJSb",
+			"enabled": true
+		},
+		{
+			"key": "practitionerNPI",
+			"value": "FAKE000104",
+			"enabled": true
+		},
+		{
+			"key": "organizationId",
+			"value": "t-063e946086545aaf9785e698",
+			"enabled": true
+		},
+		{
+			"key": "locationId",
+			"value": "tl-063e946086545aaf9785e698-063e94607682700a6864e991",
+			"enabled": true
+		},
+		{
+			"key": "Goal_id",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "",
+			"value": "",
+			"enabled": false
+		}
+	],
+	"name": "My Workspace Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2021-07-07T15:40:37.167Z",
+	"_postman_exported_using": "Postman/8.7.0"
+}

@@ -1,0 +1,695 @@
+{
+	"info": {
+		"_postman_id": "7870cf5e-7c31-4992-91c5-2da9d683eb12",
+		"name": "PractitionerRole",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PractitionerRole-Search By ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify Practitioner Id contains Id value as expected\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql(pm.environment.get(\"practitionerId\"));\r",
+							"});\r",
+							"pm.test(\"Verify active value is true\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.active).to.eql(true);\r",
+							"});\r",
+							"pm.test(\"Verify Practitioner Name is Eyob Bizuneh\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Eyob Bizuneh\");\r",
+							"});\r",
+							"pm.test(\"Verify Organization's Name is Eyob Bizuneh Practice\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Eyob Bizuneh Practice\");\r",
+							"});\r",
+							"pm.test(\"Verify Practitioner's Speciality is on Critical Care Medicine\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Critical Care Medicine\");\r",
+							"});\r",
+							"pm.test(\"Verify Practitioner's Role is Doctor\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Doctor\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var id = \"063e946057a62f75d26e16f3\";\r",
+							"pm.environment.set(\"practitionerId\", id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "grant_type",
+							"value": "implicit",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://qa.healthgorilla.com/authcallback",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "body",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "L/2MG+Ru8Wa7H87e/tH/VucBJlKNpINhK1SyocyHzac=",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Wtb6V2Cv6GmMCfeW7cAqQWQYbRFPFBaX5n86dJSb",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://qa.healthgorilla.com/oauth/access_token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Token Name",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{portalUrl}}/fhir/R4/PractitionerRole/{{practitionerId}}?_format=json",
+					"host": [
+						"{{portalUrl}}"
+					],
+					"path": [
+						"fhir",
+						"R4",
+						"PractitionerRole",
+						"{{practitionerId}}"
+					],
+					"query": [
+						{
+							"key": "_format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PractitionerRole-Search By NPI",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Verify Resource Type\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.resourceType).to.eql(\"Bundle\");\r",
+							"});\r",
+							"pm.test(\"Verify Practitioner Name is Eyob Bizuneh\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Eyob Bizuneh\");\r",
+							"});\r",
+							"pm.test(\"Verify Practitioner NPI equals FAKE000104 as expected\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.npi).to.eql(pm.environment.get(\"practitionerNPI\"));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "grant_type",
+							"value": "implicit",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://qa.healthgorilla.com/authcallback",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "body",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "L/2MG+Ru8Wa7H87e/tH/VucBJlKNpINhK1SyocyHzac=",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Wtb6V2Cv6GmMCfeW7cAqQWQYbRFPFBaX5n86dJSb",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://qa.healthgorilla.com/oauth/access_token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Token Name",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{portalUrl}}/fhir/R4/PractitionerRole?identifier=http://hl7.org/fhir/sid/us-npi%7C{{practitionerNPI}}&_include=PractitionerRole:organization&_include=PractitionerRole:location&_include=PractitionerRole:practitioner",
+					"host": [
+						"{{portalUrl}}"
+					],
+					"path": [
+						"fhir",
+						"R4",
+						"PractitionerRole"
+					],
+					"query": [
+						{
+							"key": "identifier",
+							"value": "http://hl7.org/fhir/sid/us-npi%7C{{practitionerNPI}}"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:organization"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:location"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:practitioner"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PractitionerRole-Search By Practitioner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Verify Resource Type\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.resourceType).to.eql(\"Bundle\");\r",
+							"});\r",
+							"pm.test(\"Verify Practitioner Name is Eyob Bizuneh\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Eyob Bizuneh\");\r",
+							"});\r",
+							"pm.test(\"Verify Organization's Name is Eyob Bizuneh Practice\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Eyob Bizuneh Practice\");\r",
+							"});\r",
+							"pm.test(\"Verify Organization's Location id is tl-063e946086545aaf9785e698-063e94607682700a6864e991\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"tl-063e946086545aaf9785e698-063e94607682700a6864e991\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "grant_type",
+							"value": "implicit",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://qa.healthgorilla.com/authcallback",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "body",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "L/2MG+Ru8Wa7H87e/tH/VucBJlKNpINhK1SyocyHzac=",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Wtb6V2Cv6GmMCfeW7cAqQWQYbRFPFBaX5n86dJSb",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://qa.healthgorilla.com/oauth/access_token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Token Name",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://qa.healthgorilla.com/fhir/R4/PractitionerRole?practitioner={{practitionerId}}&_include=PractitionerRole:organization&_include=PractitionerRole:location&_include=PractitionerRole:practitioner",
+					"protocol": "https",
+					"host": [
+						"qa",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"fhir",
+						"R4",
+						"PractitionerRole"
+					],
+					"query": [
+						{
+							"key": "practitioner",
+							"value": "{{practitionerId}}"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:organization"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:location"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:practitioner"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PractitionerRole-Search By Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Verify Resource Type\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.resourceType).to.eql(\"Bundle\");\r",
+							"});\r",
+							"pm.test(\"Verify Organization's Name is Eyob Bizuneh Practice\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Eyob Bizuneh Practice\");\r",
+							"});\r",
+							"pm.test(\"Verify Organization's Id equals to t-063e946086545aaf9785e698\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"t-063e946086545aaf9785e698\");\r",
+							"});\r",
+							"pm.test(\"Verify Practitioner's Role is Doctor\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Doctor\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "grant_type",
+							"value": "implicit",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://qa.healthgorilla.com/authcallback",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "body",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "L/2MG+Ru8Wa7H87e/tH/VucBJlKNpINhK1SyocyHzac=",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Wtb6V2Cv6GmMCfeW7cAqQWQYbRFPFBaX5n86dJSb",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://qa.healthgorilla.com/oauth/access_token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Token Name",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{portalUrl}}/fhir/R4/PractitionerRole?organization={{organizationId}}&role=http://terminology.hl7.org/CodeSystem/practitioner-role%7cdoctor&specialty=CriticalCareMedicine&_include=PractitionerRole:practitioner",
+					"host": [
+						"{{portalUrl}}"
+					],
+					"path": [
+						"fhir",
+						"R4",
+						"PractitionerRole"
+					],
+					"query": [
+						{
+							"key": "organization",
+							"value": "{{organizationId}}"
+						},
+						{
+							"key": "role",
+							"value": "http://terminology.hl7.org/CodeSystem/practitioner-role%7cdoctor"
+						},
+						{
+							"key": "specialty",
+							"value": "CriticalCareMedicine"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:practitioner"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Practitioner By Helath Gorilla Assigned Identifier",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Verify Practitioner Id equlas to 063e946057a62f75d26e16f3 as expected\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"063e946057a62f75d26e16f3\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "grant_type",
+							"value": "implicit",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://qa.healthgorilla.com/authcallback",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "body",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "L/2MG+Ru8Wa7H87e/tH/VucBJlKNpINhK1SyocyHzac=",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Wtb6V2Cv6GmMCfeW7cAqQWQYbRFPFBaX5n86dJSb",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://qa.healthgorilla.com/oauth/access_token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Token Name",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://qa.healthgorilla.com/fhir/R4/PractitionerRole?identifier=https://www.healthgorilla.com%7C{{practitionerId}}",
+					"protocol": "https",
+					"host": [
+						"qa",
+						"healthgorilla",
+						"com"
+					],
+					"path": [
+						"fhir",
+						"R4",
+						"PractitionerRole"
+					],
+					"query": [
+						{
+							"key": "identifier",
+							"value": "https://www.healthgorilla.com%7C{{practitionerId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Nurses in the Specified Practice and Location",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Verify Organization's Name is Eyob Bizuneh Practice\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Eyob Bizuneh Practice\");\r",
+							"});\r",
+							"pm.test(\"Verify Organization's Id equals to t-063e946086545aaf9785e698\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"t-063e946086545aaf9785e698\");\r",
+							"});\r",
+							"pm.test(\"Verify Practitioner name is Olga Oleg\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Olga Oleg\");\r",
+							"});\r",
+							"pm.test(\"Verify Practitioner's Role  is Nurse\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Nurse\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "grant_type",
+							"value": "implicit",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://qa.healthgorilla.com/authcallback",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "body",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "L/2MG+Ru8Wa7H87e/tH/VucBJlKNpINhK1SyocyHzac=",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Wtb6V2Cv6GmMCfeW7cAqQWQYbRFPFBaX5n86dJSb",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://qa.healthgorilla.com/oauth/access_token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://qa.healthgorilla.com/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Token Name",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{portalUrl}}/fhir/R4/PractitionerRole?organization={{organizationId}}&location={{locationId}}&_include=PractitionerRole:organization&role=http://terminology.hl7.org/CodeSystem/practitioner-role%7Cnurse",
+					"host": [
+						"{{portalUrl}}"
+					],
+					"path": [
+						"fhir",
+						"R4",
+						"PractitionerRole"
+					],
+					"query": [
+						{
+							"key": "organization",
+							"value": "{{organizationId}}"
+						},
+						{
+							"key": "location",
+							"value": "{{locationId}}"
+						},
+						{
+							"key": "_include",
+							"value": "PractitionerRole:organization"
+						},
+						{
+							"key": "role",
+							"value": "http://terminology.hl7.org/CodeSystem/practitioner-role%7Cnurse"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "variable_key",
+			"value": ""
+		}
+	]
+}
